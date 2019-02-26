@@ -1,5 +1,8 @@
 package Tests;
 
+import Pages.Elements;
+import Utilities.MyLibrary;
+import Utilities.TestBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,42 +10,40 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class YahooTest {
 
-    WebDriver driver;
-
-    /*
+     /*
        -When we try to import library of the some methods in maven , all we need to do is write the dependincy ,
        -When we chose the dependency we have to chose the (org.testng) one .
        -In testNG we don't use main method, because it will run the application as testNG , (junit will same as testNG)
        and main method is the method to run the java application.
      */
 
+public class YahooTest extends TestBase {
+
 
     @BeforeMethod
-    public void setups(){
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-    }
-
-
-    @AfterMethod
-    public void EndTest(){
-        driver.quit();
+    public void setup2() {
+        Elements e = new Elements();
+        e.loginprocess();
     }
 
     @Test(priority = 1)
-    public void FirstTest(){
-        driver.get("https://www.yahoo.com");
+    public void firstTest() {
+
     }
 
-    @Test(priority = 5)
+    @Test(priority = 2)
     public void SecondTest() {
-        driver.get("https://www.facebook.com");
+
     }
 
-    @Test(priority = 6)
+    @Test(priority = 3)
     public void ThirdTest() {
-        driver.get("https://www.google.com");
+
     }
 }
+
+
+
+
+
